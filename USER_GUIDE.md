@@ -1,9 +1,9 @@
-<div class='title'>NBA-API 使用手册</div>
+<div class='title'>SimpleAPI 使用手册</div>
 
 # 仓库地址
 
-[牛B啊-API(gitee)](https://github.com/fushengruomengzhang/NBA-API/)    
-[牛B啊-API(github)](https://gitee.com/fusheng_zhang/NBA-API/)
+[SimpleAPI (GitHub)](https://github.com/fushengruomengzhang/SimpleAPI/)    
+[SimpleAPI (Gitee)](https://gitee.com/fusheng_zhang/SimpleAPI/)
 
 > 在浏览器里完成：**测接口、写文档、定时巡检、AI 助手、群聊**。  
 > 左侧帮助目录与侧栏同序：API → Swagger → 组合文档 → 定时 → AI助手 → 群聊 → 配置 → 使用帮助；底栏还有 **数据统计**。
@@ -12,7 +12,7 @@
 
 # 产品概览
 
-**NBA-API** 面向开发、测试、产品团队，支持内网私有化与本地部署。
+**SimpleAPI** 面向开发、测试、产品团队，支持内网私有化与本地部署。
 
 ## 侧栏入口（正式端）
 
@@ -91,7 +91,7 @@
 
 > 对比对象：**Postman · Apifox · Insomnia · Swagger / Knife4j · YApi**（下表「常见情况」指这类工具里较普遍的能力，非逐产品打分）
 
-| 能力 | NBA-API | 常见情况 |
+| 能力 | SimpleAPI | 常见情况 |
 |------|:-------:|----------|
 | HTTP / SSE / WebSocket | ✅ / ✅ / ✅ | SSE/WS 因工具而异 |
 | 服务器转发时传输加密 | ✅ | 少见 |
@@ -186,7 +186,7 @@
 
 | 你怎么测 | 怎么发出去 | 需要什么 |
 |----------|------------|----------|
-| 普通 HTTP（未开插件） | 经 **远程 NBA-API 服务** 转发 | 远程服务要通 |
+| 普通 HTTP（未开插件） | 经 **远程 SimpleAPI 服务** 转发 | 远程服务要通 |
 | SSE | 每次单独走服务端流式通道 | 远程要通（本机插件代发除外） |
 | WebSocket | 浏览器直连目标 | 不经批量；多标签批量会跳过 |
 | 开了「自动启用插件」或「使用插件」的 HTTP | 篡改猴从本机发出 | 远程可不通；见 1.15 |
@@ -415,7 +415,7 @@ function buildMessage(msg) {
 // @name         CORS Script
 // @namespace    http://tampermonkey.net/
 // @version      1.0.3
-// @description  《NBA-API管理》油猴跨域脚本
+// @description  《SimpleAPI管理》油猴跨域脚本
 // @author       fusheng.zhang
 // @match        192.168.18.191/view/pc_scmp/*
 // @match        www.baidu.com/*
@@ -447,7 +447,7 @@ function buildMessage(msg) {
 
   if (!config.collectHeaderHost.includes(new URL(unsafeWindow.location.href).host)) return;
 
-  /** 把请求头整理后交给 NBA-API 的「插件请求头管理」 */
+  /** 把请求头整理后交给 SimpleAPI 的「插件请求头管理」 */
   function collectHeaders({url, headers, type}) {
     if (!headers) return;
     let entries = [], host = new URL(url, unsafeWindow.location.href).host;
@@ -765,7 +765,7 @@ A：拒绝只在本机生效，对方收不到回执。
 
 ---
 
-# NBA-API
+# SimpleAPI
 
 **一句话：** 团队在线 API 测试与文档平台——测接口、写文档、定时、AI、群聊，一个工具搞定。
 
