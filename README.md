@@ -83,20 +83,35 @@ API管理 → Swagger管理 → 组合文档 → 定时任务 → AI助手 → �
 - GitHub：[https://github.com/fushengruomengzhang/SimpleAPI](https://github.com/fushengruomengzhang/SimpleAPI)  
 - Gitee：[https://gitee.com/fusheng_zhang/SimpleAPI](https://gitee.com/fusheng_zhang/SimpleAPI)  
 
-`source` 目录含：`scmp.jar`、`lib/other/*.jar`、`sqlit-db.db`、`static`（前端静态资源）。
+`source` 目录含：`scmp.jar`、`lib/`、`sqlit-db.db`、`static`、启动脚本 `start.sh` / `start.bat`。
 
-### 启动（JDK 8）
+### 推荐启动（JDK 8）
+
+进入 `source` 目录后执行脚本即可：**若已在运行则先结束再重启。**
 
 ```shell
-java -jar scmp.jar \
-	--db.type=sqlit --sqlit.path=./sqlit-db.db \ # 配置为你的 sqlite-db.db 路径（文件名以包内为准）
-	--project.location-file-path=file:./static/ \ # 配置为你的static目录路径
-	--project.socket.ports=3501 \ # webSocket 端口配置
-	--spring.profiles.active=pro >/dev/null 2>&1 & # 如果要控制台启动，可以不使用这一行，同时注意去掉上一行结果的反斜杠/
+cd source
+chmod +x start.sh   # 仅首次需要
+./start.sh
 ```
 
 ```batch
-java -jar .\scmp.jar --db.type=sqlit --sqlit.path=./sqlit-db.db --project.location-file-path=file:./static/
+cd source
+start.bat
+```
+
+### 手动启动（可选）
+
+```shell
+java -jar scmp.jar \
+	--db.type=sqlit --sqlit.path=./sqlit-db.db \
+	--project.location-file-path=file:./static/ \
+	--project.socket.ports=3501 \
+	--spring.profiles.active=pro
+```
+
+```batch
+java -jar .\scmp.jar --db.type=sqlit --sqlit.path=./sqlit-db.db --project.location-file-path=file:./static/ --project.socket.ports=3501 --spring.profiles.active=pro
 ```
 
 默认库为 **SQLite**，也支持 **MySQL 8**（更稳，可邮件联系配置）。
